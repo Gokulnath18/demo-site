@@ -51,6 +51,15 @@
   --color-warning-500: #e0a52c;
   --color-danger-500: #e2513f;
 
+  /* Status, tinted background + accessible foreground pairs (e.g. Badge).
+     No light-tint scale exists for success, unlike accent/neutral, so these
+     are defined explicitly here rather than derived. Both sides of each
+     pair are chosen to clear WCAG AA (4.5:1) against each other. */
+  --color-success-bg: #e3f7ec;
+  --color-success-text: #1c7a4e;
+  --color-info-bg: var(--color-accent-100);
+  --color-info-text: var(--color-accent-700);
+
   /* Semantic */
   --color-bg: var(--color-neutral-0);
   --color-bg-subtle: var(--color-neutral-50);
@@ -168,5 +177,10 @@
     --color-text-subtle: var(--color-neutral-400);
     --color-accent: var(--color-accent-400);
     --color-accent-hover: var(--color-accent-300);
+
+    --color-success-bg: #123524;
+    --color-success-text: #6fdba0;
+    --color-info-bg: var(--color-accent-900);
+    --color-info-text: var(--color-accent-200);
   }
 }

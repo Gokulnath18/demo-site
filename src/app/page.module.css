@@ -1,0 +1,11 @@
+.main {
+  padding: var(--space-6);
+  max-width: 40rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}

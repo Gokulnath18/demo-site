@@ -1,0 +1,27 @@
+/**
+ * Base document styles — the only place non-component CSS should live.
+ * Resets UA defaults and applies the design tokens (font, color, background)
+ * at the document root so every page starts from the token system instead
+ * of browser defaults.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
