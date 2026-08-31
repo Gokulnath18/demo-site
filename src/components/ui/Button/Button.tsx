@@ -63,6 +63,7 @@ export const Button = forwardRef<
 >(function Button(props, ref) {
   if (props.as === "a") {
     const {
+      as: _as,
       variant = "primary",
       size = "md",
       loading = false,
@@ -71,6 +72,7 @@ export const Button = forwardRef<
       onClick,
       ...rest
     } = props;
+    void _as; // discriminant only — must be excluded from `rest` so it isn't spread onto the DOM node
     const isBlocked = loading;
     const spinner = loading && (
       <span className={styles.spinner} aria-hidden="true" />
@@ -99,6 +101,7 @@ export const Button = forwardRef<
   }
 
   const {
+    as: _as,
     variant = "primary",
     size = "md",
     loading = false,
@@ -107,6 +110,7 @@ export const Button = forwardRef<
     onClick,
     ...rest
   } = props;
+  void _as; // discriminant only — must be excluded from `rest` so it isn't spread onto the DOM node
   const isBlocked = loading || Boolean(rest.disabled);
   const spinner = loading && (
     <span className={styles.spinner} aria-hidden="true" />
