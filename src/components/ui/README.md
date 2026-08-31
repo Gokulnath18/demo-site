@@ -14,6 +14,11 @@ Shared UI primitives.
   rather than tracked internal state. See the rationale comment on
   `Tooltip.tsx` for why Base UI over Radix.
 
+- **PricingCard** (Stage 6) — composed from Card + Badge + LinkButton. Lives
+  here rather than in `components/launch` because it's a generic pricing-tier
+  display, not launch-specific content, even though the launch page is its
+  only consumer so far.
+
 All variants/sizes/spacing here reference tokens from `styles/tokens.css`
 (and `lib/tokens.ts` for JS-side values) — no hardcoded hex or px values.
 

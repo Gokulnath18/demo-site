@@ -1,0 +1,61 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.statPanelPlaceholder {
+  height: 20rem;
+  margin: 0 var(--space-5) var(--space-8);
+}
+
+.pricingSection {
+  padding: var(--space-8) var(--space-5);
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.pricingHeading {
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: stretch;
+}
+
+.ctaBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-9) var(--space-5);
+  margin-top: var(--space-8);
+  background-color: var(--color-bg-subtle);
+  text-align: center;
+}
+
+.ctaHeading {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.ctaSubhead {
+  margin: 0;
+  max-width: 32rem;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}

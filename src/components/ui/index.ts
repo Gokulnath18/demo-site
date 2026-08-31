@@ -10,6 +10,9 @@ export type { CardProps, CardVariant } from "./Card";
 export { Badge } from "./Badge";
 export type { BadgeProps, BadgeVariant } from "./Badge";
 
+export { PricingCard } from "./PricingCard";
+export type { PricingCardProps } from "./PricingCard";
+
 export { Tabs } from "./Tabs";
 export type { TabsProps, TabsItem } from "./Tabs";
 

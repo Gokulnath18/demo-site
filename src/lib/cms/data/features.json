@@ -1,0 +1,22 @@
+[
+  {
+    "id": "unified-calendar",
+    "title": "Unified content calendar",
+    "description": "Plan and preview every channel's queue in one drag-and-reorder calendar, so nothing goes out of order or off-brand."
+  },
+  {
+    "id": "smart-send-windows",
+    "title": "Smart send-time windows",
+    "description": "Define recurring send windows per channel and Beacon fills them automatically, spacing a week of content evenly without manual rescheduling."
+  },
+  {
+    "id": "built-in-review",
+    "title": "Team review, built in",
+    "description": "Leave threaded comments on a queued post before it ships, with unread badges so nothing slips past review."
+  },
+  {
+    "id": "exportable-reporting",
+    "title": "Reporting you can export",
+    "description": "Every performance chart ships with a CSV export, so the data behind it is never locked inside a dashboard."
+  }
+]
