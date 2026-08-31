@@ -1,0 +1,76 @@
+[
+  {
+    "id": "6511f2a1e4b0a10012a4b1a1",
+    "slug": "scheduled-send-windows",
+    "title": "Scheduled send windows",
+    "html": "<p>You can now define recurring send windows per channel instead of picking a single time for every post. Beacon spreads queued posts evenly across the windows you set, so a week of content goes out without manual re-scheduling.</p>",
+    "plaintext": "You can now define recurring send windows per channel instead of picking a single time for every post. Beacon spreads queued posts evenly across the windows you set, so a week of content goes out without manual re-scheduling.",
+    "published_at": "2026-08-18T09:00:00.000Z",
+    "tags": [{ "id": "tag-feature", "name": "Feature", "slug": "feature" }]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a2",
+    "slug": "dashboard-loading-performance",
+    "title": "Faster dashboard loads on large workspaces",
+    "html": "<p>Workspaces with more than 20 connected channels were seeing multi-second dashboard loads. We rewrote the initial data fetch to paginate channel summaries instead of loading them all at once, cutting median load time by roughly 60%.</p>",
+    "plaintext": "Workspaces with more than 20 connected channels were seeing multi-second dashboard loads. We rewrote the initial data fetch to paginate channel summaries instead of loading them all at once, cutting median load time by roughly 60%.",
+    "published_at": "2026-08-05T14:30:00.000Z",
+    "tags": [
+      { "id": "tag-improvement", "name": "Improvement", "slug": "improvement" }
+    ]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a3",
+    "slug": "queue-drag-reorder",
+    "title": "Drag to reorder the post queue",
+    "html": "<p>The queue view now supports drag-and-drop reordering with full keyboard support — grab a post with space, move it with the arrow keys, and drop it with space again. Screen reader users get live position announcements as they move a card.</p>",
+    "plaintext": "The queue view now supports drag-and-drop reordering with full keyboard support — grab a post with space, move it with the arrow keys, and drop it with space again. Screen reader users get live position announcements as they move a card.",
+    "published_at": "2026-07-22T11:15:00.000Z",
+    "tags": [
+      { "id": "tag-feature", "name": "Feature", "slug": "feature" },
+      {
+        "id": "tag-accessibility",
+        "name": "Accessibility",
+        "slug": "accessibility"
+      }
+    ]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a4",
+    "slug": "duplicate-post-fix",
+    "title": "Fixed duplicate posts on flaky connections",
+    "html": "<p>A retry in the publish worker could double-submit a post when a channel's API timed out but had actually succeeded. Publishing now checks for an existing post ID before retrying, eliminating the duplicates.</p>",
+    "plaintext": "A retry in the publish worker could double-submit a post when a channel's API timed out but had actually succeeded. Publishing now checks for an existing post ID before retrying, eliminating the duplicates.",
+    "published_at": "2026-07-09T16:45:00.000Z",
+    "tags": [{ "id": "tag-fix", "name": "Fix", "slug": "fix" }]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a5",
+    "slug": "refreshed-composer",
+    "title": "A refreshed post composer",
+    "html": "<p>The composer has a new layout that keeps the character-count and channel-preview panels visible while you type, instead of requiring a tab switch. Preview panels update as you type rather than on blur.</p>",
+    "plaintext": "The composer has a new layout that keeps the character-count and channel-preview panels visible while you type, instead of requiring a tab switch. Preview panels update as you type rather than on blur.",
+    "published_at": "2026-06-27T10:00:00.000Z",
+    "tags": [{ "id": "tag-design", "name": "Design", "slug": "design" }]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a6",
+    "slug": "team-comment-threads",
+    "title": "Comment threads on queued posts",
+    "html": "<p>Teams can now leave threaded comments on a queued post before it goes out, with an unread badge on the queue card. Comments are stripped from the post itself and never reach the published content.</p>",
+    "plaintext": "Teams can now leave threaded comments on a queued post before it goes out, with an unread badge on the queue card. Comments are stripped from the post itself and never reach the published content.",
+    "published_at": "2026-06-11T08:20:00.000Z",
+    "tags": [{ "id": "tag-feature", "name": "Feature", "slug": "feature" }]
+  },
+  {
+    "id": "6511f2a1e4b0a10012a4b1a7",
+    "slug": "analytics-export-csv",
+    "title": "Export analytics as CSV",
+    "html": "<p>Every analytics chart now has an export action that downloads the underlying series as CSV, matching the date range currently selected on screen.</p>",
+    "plaintext": "Every analytics chart now has an export action that downloads the underlying series as CSV, matching the date range currently selected on screen.",
+    "published_at": "2026-05-30T13:00:00.000Z",
+    "tags": [
+      { "id": "tag-improvement", "name": "Improvement", "slug": "improvement" }
+    ]
+  }
+]
