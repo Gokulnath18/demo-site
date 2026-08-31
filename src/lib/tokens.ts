@@ -132,6 +132,11 @@ export const easing = {
   emphasized: [0.2, 0, 0, 1],
 } as const;
 
+/** Z-index layers that must stack above normal document flow. */
+export const zIndex = {
+  tooltip: 1000,
+} as const;
+
 export const tokens = {
   color,
   fontFamily,
@@ -143,6 +148,7 @@ export const tokens = {
   shadow,
   duration,
   easing,
+  zIndex,
 } as const;
 
 export default tokens;

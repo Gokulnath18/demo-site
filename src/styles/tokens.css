@@ -162,6 +162,12 @@
   --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
   --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---------------------------------------------------------------------
+   * Z-index — layers that must stack above normal document flow
+   * ------------------------------------------------------------------- */
+
+  --z-tooltip: 1000;
 }
 
 @media (prefers-color-scheme: dark) {
