@@ -12,4 +12,10 @@ Added in Stage 4.
   `ChangelogEntry` does — feature-grid copy is evergreen, not a dated post,
   so the schema is just `{ id, title, description }`.
 - `data/features.json` — original placeholder feature-grid content
-- `index.ts` — barrel re-exporting both fetchers and their types
+- `getStats.ts` — added in Stage 7 for the launch page's stat panel. Async
+  function returning `{ highlights, trend }`: `highlights` are pre-formatted
+  headline callouts (`{ id, value, label }`), `trend` is a monthly time
+  series (`{ date, postsScheduled }`) intentionally left unsorted, since
+  sorting it is `lib/stats/formatStatData`'s job, not the fetcher's.
+- `data/stats.json` — original placeholder stat-panel content
+- `index.ts` — barrel re-exporting all fetchers and their types

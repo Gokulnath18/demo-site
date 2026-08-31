@@ -1,26 +1,55 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Link from "next/link";
-import { Button } from "./Button";
+import { sharedVisualProps } from "./Button";
 import type { ButtonProps } from "./Button";
+import styles from "./Button.module.css";
 
 export type LinkButtonProps = Omit<
   Extract<ButtonProps, { as: "a" }>,
   "as" | "href"
 > & { href: string };
 
-// `Link`'s `legacyBehavior` clones its child to attach routing/prefetch
-// props, and that clone requires a ref — which Next.js can't attach when the
-// child element is created in a Server Component (it throws at runtime:
-// "received a direct child that is either a Server Component..."). This
-// wrapper exists purely so that `<Button as="a">` is created inside a
-// Client Component's render instead of a Server Component page. It adds no
-// styling of its own — Button still owns the anchor element and its
-// variant/size classes.
-export function LinkButton({ href, ...buttonProps }: LinkButtonProps) {
+// Renders Next's `Link` directly, styled with Button's own class/aria
+// helpers, rather than nesting `<Button as="a">` inside `<Link legacyBehavior
+// passHref>`. `legacyBehavior` clones its child to attach routing props, and
+// that clone requires a ref — since Next.js 13, `Link` renders its own `<a>`
+// and accepts anchor props (className, onClick, ...) directly, so no clone
+// (and no `legacyBehavior`, which is deprecated) is needed to get there.
+export function LinkButton({
+  href,
+  variant = "primary",
+  size = "md",
+  loading = false,
+  className,
+  children,
+  onClick,
+  ...rest
+}: LinkButtonProps) {
+  const isBlocked = loading;
+  const spinner = loading && (
+    <span className={styles.spinner} aria-hidden="true" />
+  );
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isBlocked) {
+      event.preventDefault();
+      return;
+    }
+    onClick?.(event);
+  };
+
   return (
-    <Link href={href} passHref legacyBehavior>
-      <Button as="a" {...buttonProps} />
+    <Link
+      href={href}
+      {...rest}
+      {...sharedVisualProps(variant, size, isBlocked, loading, className)}
+      onClick={handleClick}
+      tabIndex={isBlocked ? -1 : rest.tabIndex}
+    >
+      {spinner}
+      {children}
     </Link>
   );
 }

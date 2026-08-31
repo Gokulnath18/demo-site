@@ -1,12 +1,26 @@
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 import LaunchPage from "./page";
-import { getChangelog, getFeatures } from "@/lib/cms";
+import { getChangelog, getFeatures, getStats } from "@/lib/cms";
 
 jest.mock("@/lib/cms", () => ({
   getFeatures: jest.fn(),
   getChangelog: jest.fn(),
+  getStats: jest.fn(),
 }));
+
+const mockStats = {
+  highlights: [
+    { id: "h1", value: "2.4M", label: "Posts scheduled all-time" },
+    { id: "h2", value: "150K+", label: "Workspaces on Beacon" },
+    { id: "h3", value: "4.2 hrs", label: "Saved weekly per team" },
+  ],
+  trend: [
+    { date: "2026-01-01", postsScheduled: 61000 },
+    { date: "2026-02-01", postsScheduled: 68000 },
+    { date: "2026-03-01", postsScheduled: 72000 },
+  ],
+};
 
 const mockFeatures = [
   { id: "f1", title: "Feature one", description: "Description one." },
@@ -43,6 +57,7 @@ describe("LaunchPage", () => {
   beforeEach(() => {
     (getFeatures as jest.Mock).mockResolvedValue(mockFeatures);
     (getChangelog as jest.Mock).mockResolvedValue(mockChangelog);
+    (getStats as jest.Mock).mockResolvedValue(mockStats);
   });
 
   it("renders a single h1 headline", async () => {
@@ -53,7 +68,15 @@ describe("LaunchPage", () => {
   it("renders an h2 for each section", async () => {
     await renderLaunchPage();
     const headings = screen.getAllByRole("heading", { level: 2 });
-    expect(headings.length).toBeGreaterThanOrEqual(4);
+    expect(headings.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it("renders the stat panel's headline callouts and chart", async () => {
+    await renderLaunchPage();
+    expect(screen.getByText("2.4M")).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", { name: /posts scheduled per month/i }),
+    ).toBeInTheDocument();
   });
 
   it("renders the fetched feature grid items", async () => {

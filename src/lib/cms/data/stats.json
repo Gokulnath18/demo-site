@@ -1,0 +1,27 @@
+{
+  "highlights": [
+    {
+      "id": "posts-scheduled",
+      "value": "2.4M",
+      "label": "Posts scheduled all-time"
+    },
+    {
+      "id": "workspaces",
+      "value": "150K+",
+      "label": "Workspaces on Beacon"
+    },
+    {
+      "id": "hours-saved",
+      "value": "4.2 hrs",
+      "label": "Saved weekly per team"
+    }
+  ],
+  "trend": [
+    { "date": "2026-03-01", "postsScheduled": 72000 },
+    { "date": "2026-01-01", "postsScheduled": 61000 },
+    { "date": "2026-06-01", "postsScheduled": 104000 },
+    { "date": "2026-02-01", "postsScheduled": 68000 },
+    { "date": "2026-05-01", "postsScheduled": 91000 },
+    { "date": "2026-04-01", "postsScheduled": 79000 }
+  ]
+}

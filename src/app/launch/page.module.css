@@ -3,11 +3,6 @@
   flex-direction: column;
 }
 
-.statPanelPlaceholder {
-  height: 20rem;
-  margin: 0 var(--space-5) var(--space-8);
-}
-
 .pricingSection {
   padding: var(--space-8) var(--space-5);
   max-width: 64rem;

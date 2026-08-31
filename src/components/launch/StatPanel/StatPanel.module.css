@@ -1,0 +1,55 @@
+.section {
+  /* `.main` (page.module.css) is a column flexbox, and an auto cross-axis
+     margin on a flex item overrides `align-items: stretch` — without an
+     explicit width the section shrinks to fit its content instead of
+     filling out to `max-width`, which in turn starves the `auto-fit` grid
+     below of the space it needs to lay out in more than one column. */
+  width: 100%;
+  padding: var(--space-8) var(--space-5);
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.heading {
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.highlightCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: center;
+}
+
+.highlightValue {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.highlightLabel {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.chartCard {
+  padding: var(--space-5);
+}

@@ -41,7 +41,7 @@ type ButtonAsAnchor = ButtonOwnProps &
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
-function sharedVisualProps(
+export function sharedVisualProps(
   variant: ButtonVariant,
   size: ButtonSize,
   isBlocked: boolean,

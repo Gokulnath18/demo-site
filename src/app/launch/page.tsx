@@ -1,4 +1,5 @@
 import { Hero } from "@/components/launch/Hero";
+import { StatPanel } from "@/components/launch/StatPanel";
 import { FeatureGrid } from "@/components/launch/FeatureGrid";
 import { ChangelogTimeline } from "@/components/launch/ChangelogTimeline";
 import { PricingCard } from "@/components/ui/PricingCard";
@@ -12,22 +13,26 @@ import styles from "./page.module.css";
 // concerns. No dynamic APIs (cookies/headers/searchParams) are touched
 // anywhere in this tree, so the route still statically generates at build
 // time despite the awaited fetches below.
+//
+// StatPanel is the exception to the "pass data as props" pattern — it
+// fetches its own data (see its module doc) — but it's still resolved as a
+// plain async call here, rather than rendered as `<StatPanel />`, so this
+// page keeps working with the `await LaunchPage()` + `render()` test
+// pattern used throughout this app: React DOM's test renderer can resolve
+// one top-level async component per render, but not an async component
+// nested inside another one's returned tree.
 export default async function LaunchPage() {
-  const [features, changelog] = await Promise.all([
+  const [features, changelog, statPanel] = await Promise.all([
     getFeatures(),
     getChangelog(),
+    StatPanel(),
   ]);
 
   return (
     <main className={styles.main}>
       <Hero />
 
-      {/*
-        Stage 7 slot: stat panel (Recharts). Fixed height reserves its
-        space now so adding real content later doesn't shift anything
-        below it (CLS).
-      */}
-      <div className={styles.statPanelPlaceholder} aria-hidden="true" />
+      {statPanel}
 
       <FeatureGrid features={features} />
 
