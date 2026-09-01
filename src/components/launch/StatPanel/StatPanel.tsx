@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/Card";
 import { getStats } from "@/lib/cms";
 import { formatStatData } from "@/lib/stats/formatStatData";
+import { AnimatedNumber } from "./AnimatedNumber";
 import { StatChart } from "./StatChart";
 import styles from "./StatPanel.module.css";
 
@@ -30,7 +31,9 @@ export async function StatPanel() {
         {stats.highlights.map((highlight) => (
           <li key={highlight.id}>
             <Card className={styles.highlightCard}>
-              <p className={styles.highlightValue}>{highlight.value}</p>
+              <p className={styles.highlightValue}>
+                <AnimatedNumber value={highlight.value} />
+              </p>
               <p className={styles.highlightLabel}>{highlight.label}</p>
             </Card>
           </li>
@@ -38,7 +41,9 @@ export async function StatPanel() {
         {growthValue && (
           <li>
             <Card className={styles.highlightCard}>
-              <p className={styles.highlightValue}>{growthValue}</p>
+              <p className={styles.highlightValue}>
+                <AnimatedNumber value={growthValue} />
+              </p>
               <p className={styles.highlightLabel}>
                 Posts scheduled, last 6 months
               </p>

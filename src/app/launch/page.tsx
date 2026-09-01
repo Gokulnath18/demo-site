@@ -4,6 +4,7 @@ import { FeatureGrid } from "@/components/launch/FeatureGrid";
 import { ChangelogTimeline } from "@/components/launch/ChangelogTimeline";
 import { PricingCard } from "@/components/ui/PricingCard";
 import { LinkButton } from "@/components/ui/Button";
+import { Reveal } from "@/components/motion";
 import { getChangelog, getFeatures } from "@/lib/cms";
 import { pricingTiers } from "./pricingTiers";
 import styles from "./page.module.css";
@@ -55,17 +56,19 @@ export default async function LaunchPage() {
 
       <ChangelogTimeline entries={changelog} />
 
-      <section className={styles.ctaBanner} aria-labelledby="cta-heading">
-        <h2 id="cta-heading" className={styles.ctaHeading}>
-          Ready to put your queue on autopilot?
-        </h2>
-        <p className={styles.ctaSubhead}>
-          Start a free trial — no credit card, no migration, just your existing
-          channels connected in minutes.
-        </p>
-        <LinkButton href="/signup" variant="primary" size="lg">
-          Start your free trial
-        </LinkButton>
+      <section aria-labelledby="cta-heading">
+        <Reveal className={styles.ctaBanner}>
+          <h2 id="cta-heading" className={styles.ctaHeading}>
+            Ready to put your queue on autopilot?
+          </h2>
+          <p className={styles.ctaSubhead}>
+            Start a free trial — no credit card, no migration, just your
+            existing channels connected in minutes.
+          </p>
+          <LinkButton href="/signup" variant="primary" size="lg">
+            Start your free trial
+          </LinkButton>
+        </Reveal>
       </section>
     </main>
   );

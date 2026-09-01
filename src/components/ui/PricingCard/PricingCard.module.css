@@ -3,6 +3,30 @@
   flex-direction: column;
   gap: var(--space-4);
   height: 100%;
+  /* transform/box-shadow only — no layout-triggering properties, and both
+     are cheap for the browser to animate. CSS transition (not Motion):
+     this is a plain `:hover` state, not something that needs to be gated
+     by scroll position or JS at all, so it doesn't need the "use client"
+     boundary a Motion-driven version would add to a component that's
+     otherwise a Server Component. */
+  transition:
+    transform var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
 }
 
 .highlighted {

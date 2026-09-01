@@ -21,3 +21,28 @@ if (typeof window !== "undefined" && !window.PointerEvent) {
 
   window.PointerEvent = PointerEvent as unknown as typeof window.PointerEvent;
 }
+
+// jsdom has no IntersectionObserver. Motion's `useInView`/`whileInView`
+// (Stage 8's Reveal/Stagger/AnimatedNumber components) construct a real one
+// unconditionally, so without this stub mounting any of them throws. It
+// never actually reports an intersection — entrance content simply stays in
+// its initial ("hidden") state for the lifetime of a test, which is fine
+// since assertions target text content and reduced-motion prop gating, not
+// animation state (exact animation timing is out of scope for these tests).
+if (typeof window !== "undefined" && !window.IntersectionObserver) {
+  class IntersectionObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords(): IntersectionObserverEntry[] {
+      return [];
+    }
+    root = null;
+    rootMargin = "";
+    thresholds: ReadonlyArray<number> = [];
+  }
+
+  window.IntersectionObserver =
+    IntersectionObserver as unknown as typeof window.IntersectionObserver;
+  global.IntersectionObserver = window.IntersectionObserver;
+}
