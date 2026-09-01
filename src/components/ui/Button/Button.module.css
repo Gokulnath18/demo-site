@@ -47,12 +47,15 @@
 /* Variants */
 
 .primary {
-  background-color: var(--color-accent);
+  /* --color-accent-solid, not --color-accent: --color-accent goes lighter
+     in dark mode (tuned for use as foreground text), which would drop
+     this white-on-fill text under 4.5:1 — see tokens.css. */
+  background-color: var(--color-accent-solid);
   color: var(--color-text-on-accent);
 }
 
 .primary:hover:not(:disabled):not([aria-disabled="true"]) {
-  background-color: var(--color-accent-hover);
+  background-color: var(--color-accent-solid-hover);
 }
 
 .secondary {

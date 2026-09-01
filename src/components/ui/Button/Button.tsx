@@ -92,7 +92,7 @@ export const Button = forwardRef<
         ref={ref as Ref<HTMLAnchorElement>}
         {...sharedVisualProps(variant, size, isBlocked, loading, className)}
         onClick={handleClick}
-        tabIndex={isBlocked ? -1 : rest.tabIndex}
+        tabIndex={rest.tabIndex}
       >
         {spinner}
         {children}

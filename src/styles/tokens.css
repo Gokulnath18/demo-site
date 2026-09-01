@@ -69,11 +69,29 @@
   --color-border-strong: var(--color-neutral-300);
   --color-text: var(--color-neutral-900);
   --color-text-muted: var(--color-neutral-600);
-  --color-text-subtle: var(--color-neutral-500);
+  /* Literal value, not neutral-500 (#717a8a): neutral-500 only clears
+     4.33:1 against white, under the 4.5:1 AA floor for the normal-size
+     text this token is used on (ChangelogTimeline dates, A11yNotes term
+     labels, BeforeAfter's footnote). This is one step darker — 4.71:1 —
+     while staying visibly lighter than --color-text-muted (6.73:1) so the
+     two tiers stay distinct. */
+  --color-text-subtle: #6b7484;
   --color-text-on-accent: var(--color-neutral-0);
   --color-accent: var(--color-accent-500);
   --color-accent-hover: var(--color-accent-600);
   --color-focus-ring: var(--color-accent-400);
+  /* Fixed across both themes (not remapped in the dark-mode block below,
+     unlike --color-accent/--color-accent-hover): this is the fill behind
+     always-white button text (Button's `.primary`), so it must stay dark
+     enough for that white text regardless of theme. --color-accent itself
+     intentionally goes *lighter* in dark mode (accent-400) so it still
+     reads against a dark page background when used as foreground text/
+     icon color (Hero eyebrow, ghost Button, Tabs' active tab) — but that
+     same lighter value only clears 3.9:1 with white text on top of it,
+     under the 4.5:1 AA floor, which is exactly the bug this token avoids
+     by not tracking --color-accent. */
+  --color-accent-solid: var(--color-accent-500);
+  --color-accent-solid-hover: var(--color-accent-600);
 
   /* ---------------------------------------------------------------------
    * Typography
@@ -146,7 +164,12 @@
     0 12px 24px rgba(13, 15, 20, 0.1), 0 4px 8px rgba(13, 15, 20, 0.06);
   --shadow-xl:
     0 24px 48px rgba(13, 15, 20, 0.14), 0 8px 16px rgba(13, 15, 20, 0.08);
-  --shadow-focus: 0 0 0 3px var(--color-accent-200);
+  /* Uses --color-focus-ring (accent-400), not accent-200: accent-200 only
+     clears 1.7:1 against a white background, well under the 3:1 WCAG
+     1.4.11 non-text contrast floor a focus indicator needs. accent-400
+     clears 3:1 against both the light (white) and dark (neutral-950) page
+     backgrounds this ring sits against. */
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
 
   /* ---------------------------------------------------------------------
    * Motion — duration/easing tokens for use with the `motion` library
@@ -181,7 +204,16 @@
     --color-text: var(--color-neutral-50);
     --color-text-muted: var(--color-neutral-300);
     --color-text-subtle: var(--color-neutral-400);
-    --color-accent: var(--color-accent-400);
+    /* Literal value, not --color-accent-400 (#7a6cff): accent-400 only
+       clears 4.44:1 against --color-surface (neutral-900), the background
+       behind most of this color's real text usages (ghost Button, active
+       Tabs tab) inside a Card/VariantPanel cell — under the 4.5:1 AA floor,
+       confirmed by Lighthouse against the live rendered page. This value
+       sits between accent-400 and accent-300 (already used for
+       --color-accent-hover — reusing accent-300 here too would make hover
+       indistinguishable from the resting state) and clears 5:1 against
+       neutral-900 with margin. */
+    --color-accent: #8578ff;
     --color-accent-hover: var(--color-accent-300);
 
     --color-success-bg: #123524;
