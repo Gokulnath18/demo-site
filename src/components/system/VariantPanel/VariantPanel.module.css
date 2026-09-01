@@ -1,0 +1,40 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--variant-panel-min-width, 11rem), 1fr)
+  );
+  gap: var(--space-4);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  /* Grid items default to `min-width: auto`, which floors their width at
+     their content's min-content size — so a wide child (Tabs' tablist,
+     PricingCard) silently grows the whole column past `minmax()` and pokes
+     out of the bordered cell. This override lets the track's minmax actually
+     win, and content that's still too wide scrolls instead of bleeding out. */
+  min-width: 0;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.caption {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,73 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-9);
+}
+
+.intro {
+  max-width: 40rem;
+  margin-bottom: var(--space-8);
+}
+
+.headline {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.subhead {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  min-width: 0;
+}
+
+.section {
+  scroll-margin-top: var(--space-5);
+}
+
+.sectionHeading {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.sectionIntro {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Opt-in override for VariantPanel instances whose examples are naturally
+   wider than the shared 11rem column (Tabs' tablist, PricingCard) — scoped
+   to this page/section instead of changing VariantPanel's own default,
+   which every other section also uses. */
+.wideVariantPanel {
+  --variant-panel-min-width: 18rem;
+}
+
+@media (max-width: 56rem) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
